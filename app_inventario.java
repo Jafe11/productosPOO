@@ -37,6 +37,30 @@ public class app_inventario {
         }
     }
     
+    private static void fnt_actualizar(String codigo){
+        if (codigo==""){
+            JOptionPane.showMessageDialog(null, "Ingresar el dato requerido", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{
+            bl_sw = false;
+            int_p = 0;
+            for (int i = 0; i <int_pos; i++) {
+                if (codigo.equals(productos [i].getStr_codigo())){
+                    bl_sw = true;
+                    int_pos = i;
+                    break;
+                }
+            }
+            if (bl_sw = false){
+                JOptionPane.showMessageDialog(null, "No se encontro el registro");
+            }else{
+                String new_nombre = JOptionPane.showInputDialog(null, "Nombre: ");
+                String new_descripcion = JOptionPane.showInputDialog(null, "Descripcion: ");
+                productos [int_pos].setStr_nombre(new_nombre);
+                productos [int_pos].setStr_descripcion(new_descripcion);
+            }
+        }
+    }
+
     private static void fnt_selector (int opcion){
         if (opcion == 1){
             String cod = JOptionPane.showInputDialog(null,"Ingresar codigo: ");
@@ -49,6 +73,9 @@ public class app_inventario {
         }else if(opcion == 2){
             String cod = JOptionPane.showInputDialog(null, "ingrese el codigo del producto a consultar: ");
             fnt_consultar(cod);
+        }else if(opcion == 3){
+            String cod = JOptionPane.showInputDialog(null, "ingrese el codigo del producto a consultar: ");
+            fnt_actualizar(cod);
         }
     }
 
